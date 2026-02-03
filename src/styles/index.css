@@ -1,3 +1,41 @@
+@import "/node_modules/modern-normalize/modern-normalize.css";
+
+:root {
+  --editor-content-padding: 2rem;
+  --default-delay: 0.1s;
+  --content-width: 1200px;
+  --aspect-ratio: 1/1.414;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style-type: none;
+}
+
+fieldset {
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+body {
+  height: 100vh;
+}
+
+legend {
+  display: none;
+}
+
+/*
+a {
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -13,7 +51,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
@@ -66,3 +103,4 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+*/

@@ -1,4 +1,5 @@
 import type { JSX } from "react";
+import style from "../../styles/Section.module.css";
 
 export default function Section({
   title,
@@ -10,10 +11,15 @@ export default function Section({
   description?: string;
 }) {
   return (
-    <section aria-labelledby={title + "-heading"}>
-      <h2 id={title + "-heading"}>{title}</h2>
-      {description ?? <p>{description}</p>}
-      {fields}
+    <section aria-labelledby={title + "-heading"} className={style.sectionCard}>
+      <details open className="container">
+        <summary className={style.sectionTitle}>
+          <h2 id={title + "-heading"}>{title}</h2>
+          {description && <small>{description}</small>}
+        </summary>
+
+        {fields}
+      </details>
     </section>
   );
 }

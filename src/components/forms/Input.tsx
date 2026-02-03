@@ -1,5 +1,6 @@
 import { useId, useState } from "react";
-import { camelToTitleCase } from "../../utils.ts";
+import { camelToTitleCase } from "../../utils/utils.ts";
+import "../../styles/Input.module.css";
 
 interface InputProps {
   name: string;
@@ -26,7 +27,7 @@ function Input({ name, value, onChange, type = "text" }: InputProps) {
 
   return (
     <label htmlFor={id}>
-      {label}
+      <div>{label}</div>
       <input
         type={type}
         name={name}

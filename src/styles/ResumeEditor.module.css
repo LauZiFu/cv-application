@@ -1,0 +1,23 @@
+.editor {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.2rem 0.2rem 0;
+}
+
+.editor > section {
+  border-radius: 10px;
+  background-color: white;
+}
+
+.container {
+  max-height: 100%;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}

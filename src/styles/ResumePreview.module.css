@@ -1,0 +1,11 @@
+.preview {
+  aspect-ratio: 1/1.4141;
+  width: clamp(600px, 100%, 850px);
+  background-color: white;
+  margin: 0 auto;
+}
+
+.container {
+  padding: 0.2rem 0.2rem 0 0;
+  height: 100%;
+}

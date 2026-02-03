@@ -1,0 +1,10 @@
+.personal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 1rem 2rem;
+}
+
+.sectionTitle {
+  padding-top: 1rem;
+}

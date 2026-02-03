@@ -1,18 +1,22 @@
 import { Input } from "../forms/Input";
-import { format } from "date-fns";
 import Button from "../forms/Button";
 import Description from "../forms/Description";
-import type { Entry, EntryRecord } from "../../resume";
+import { formatDateResume } from "../../utils/utils";
+import type { Entry, EntryRecord } from "../../utils/resume";
+import style from "../../styles/Entry.module.css";
+import { Trash2 } from "lucide-react";
 
 export function Entry({
   props: entry,
+  legend,
   onChange,
 }: {
   props: Entry;
+  legend: string;
   onChange: (entry: Entry) => void;
 }) {
   return (
-    <details open>
+    <details open className={style.entryCard}>
       <summary>
         <h3>
           {!(entry.credential || entry.place)
@@ -21,14 +25,10 @@ export function Entry({
               (entry.place && entry.credential && " at ") +
               entry.place}
         </h3>
-        <h3>
-          {(entry.startDate && format(entry.startDate, "MMM yyyy")) +
-            (entry.startDate && entry.endDate && " - ") +
-            (entry.endDate && format(entry.endDate, "MMM yyyy"))}
-        </h3>
+        <small>{formatDateResume(entry.startDate, entry.endDate)}</small>
       </summary>
-      <fieldset>
-        <legend>Job information</legend>
+      <fieldset className={style.content}>
+        <legend>{legend}</legend>
         <Input
           name="place"
           value={entry.place}
@@ -39,7 +39,7 @@ export function Entry({
           value={entry.credential}
           onChange={(e) => onChange({ ...entry, credential: e })}
         />
-        <div className="start-end">
+        <div className={style.startEnd}>
           <Input
             name="start"
             type="month"
@@ -51,8 +51,8 @@ export function Entry({
             onChange={(e) => onChange({ ...entry, endDate: e })}
           />
         </div>
-        <Input name="city" />
-        <Description />
+        <Input name="city" onChange={(e) => onChange({ ...entry, city: e })} />
+        <Description onChange={(e) => onChange({ ...entry, description: e })} />
       </fieldset>
     </details>
   );
@@ -60,9 +60,11 @@ export function Entry({
 
 export function EntryList({
   entryList,
+  legend,
   onChange,
 }: {
   entryList: EntryRecord;
+  legend: string;
   onChange: (a: EntryRecord) => void;
 }) {
   const handleClick = () => {
@@ -88,21 +90,30 @@ export function EntryList({
   };
 
   return (
-    <>
-      <ul>
+    <div className={style.container}>
+      <ul className={style.entryList}>
         {Object.entries(entryList).map(([id]) => (
           <li key={id}>
             <Entry
               props={entryList[id]}
+              legend={legend}
               onChange={(entry: Entry) =>
                 onChange({ ...entryList, [id]: entry })
               }
             />
-            <Button text="delete" handleClick={() => handleDelete(id)} />
+            <Button
+              className={style.delete}
+              icon={<Trash2 />}
+              handleClick={() => handleDelete(id)}
+            />
           </li>
         ))}
       </ul>
-      <Button text="add entry" handleClick={() => handleClick()} />
-    </>
+      <Button
+        className={style.add}
+        text="add entry"
+        handleClick={() => handleClick()}
+      />
+    </div>
   );
 }
