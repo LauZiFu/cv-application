@@ -8,3 +8,11 @@
 .sectionTitle {
   padding-top: 1rem;
 }
+
+@media (max-width: 600px) {
+  .personal {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

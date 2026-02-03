@@ -13,7 +13,6 @@ export default function App() {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setPreview(resume);
-      console.log("Debounced value updated:", resume);
     }, 500);
     return () => {
       clearTimeout(timeout);

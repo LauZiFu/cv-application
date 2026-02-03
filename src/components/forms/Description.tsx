@@ -1,3 +1,4 @@
+import styles from "../../styles/Input.module.css";
 import { useId } from "react";
 
 export default function Description({
@@ -7,13 +8,15 @@ export default function Description({
 }) {
   const id = useId();
   return (
-    <label htmlFor={id}>
-      Description
-      <textarea
-        name="description"
-        id={id}
-        onChange={(e) => onChange(e.target.value)}
-      ></textarea>
-    </label>
+    <div className={styles.field}>
+      <label htmlFor={id}>
+        <div className={styles.label}>Description</div>
+        <textarea
+          name="description"
+          id={id}
+          onChange={(e) => onChange(e.target.value)}
+        ></textarea>
+      </label>
+    </div>
   );
 }

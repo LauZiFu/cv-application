@@ -1,6 +1,7 @@
 import type { Details } from "../../utils/resume";
 import { Input } from "../forms/Input";
 import style from "../../styles/PersonalDetails.module.css";
+import Accordion from "../Accordion";
 
 //name, email, phone number, address
 export default function PersonalDetails({
@@ -10,48 +11,23 @@ export default function PersonalDetails({
   details: Details;
   onChange: (a: Details) => void;
 }) {
+  const heading = <h2 id="personal-details">Personal Details</h2>;
+  const inputs = Object.entries(details).map(([key]) => (
+    <Input
+      key={key}
+      name={key}
+      onChange={(value) => onChange({ ...details, [key]: value })}
+    />
+  ));
   return (
-    <section aria-labelledby="personal-details">
-      <details open>
-        <summary className={style.sectionTitle}>
-          <h2 id="personal-details">Personal Details</h2>
-        </summary>
+    <Accordion
+      title={heading}
+      content={
         <fieldset className={style.personal}>
           <legend>Personal Information</legend>
-          <Input
-            name="firstName"
-            onChange={(firstName) =>
-              onChange({ ...details, firstName: firstName })
-            }
-          />
-          <Input
-            name="lastName"
-            onChange={(lastName) =>
-              onChange({ ...details, lastName: lastName })
-            }
-          />
-          <Input
-            type="email"
-            name="email"
-            onChange={(email) => onChange({ ...details, email: email })}
-          />
-          <Input
-            type="tel"
-            name="tel"
-            onChange={(tel) => onChange({ ...details, tel: tel })}
-          />
-          <Input
-            name="cityState"
-            onChange={(cityState) =>
-              onChange({ ...details, cityState: cityState })
-            }
-          />
-          <Input
-            name="country"
-            onChange={(country) => onChange({ ...details, country: country })}
-          />
+          {inputs}
         </fieldset>
-      </details>
-    </section>
+      }
+    />
   );
 }

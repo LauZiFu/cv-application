@@ -1,14 +1,53 @@
-label > div {
+.label {
   text-align: left;
+  color: var(--dark-field-color);
+  font-size: small;
 }
 
-label {
+.field > label {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
 }
 
-input {
+.field input,
+.field textarea {
   width: 100%;
-  padding: 0.5rem;
+  padding: 1rem;
+  background-color: var(--input-field-color);
+  border: none;
+  caret-color: blue;
+  overflow: hidden;
+}
+
+.field textarea {
+  display: block;
+  width: 100%;
+  font: inherit;
+}
+
+.field {
+  position: relative;
+}
+
+.field::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: blue;
+  left: 0;
+  right: 0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.15s ease-in;
+}
+
+.field:focus-within::after {
+  transform: scaleX(1);
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
 }

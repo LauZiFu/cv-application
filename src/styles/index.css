@@ -5,6 +5,13 @@
   --default-delay: 0.1s;
   --content-width: 1200px;
   --aspect-ratio: 1/1.414;
+  --default-border-radius: 10px;
+  --section-padding: 1.25rem 2rem;
+  --background-color: #f5f5ff;
+  --input-field-color: #eeeeff;
+  --dark-field-color: color-mix(in srgb, var(--input-field-color), black 50%);
+
+  font-family: Helvetica, Arial, sans-serif, system-ui, Avenir;
 }
 
 *,
@@ -34,6 +41,16 @@ legend {
   display: none;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea {
+  overflow: hidden;
+}
 /*
 a {
 :root {

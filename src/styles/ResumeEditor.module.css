@@ -6,9 +6,16 @@
   padding: 0.2rem 0.2rem 0;
 }
 
-.editor > section {
+.editor > section,
+.container > section {
   border-radius: 10px;
   background-color: white;
+}
+
+.lastSection {
+  flex: 1;
+  min-height: 300px;
+  margin: 0 0.2rem 0.2rem;
 }
 
 .container {
@@ -16,8 +23,31 @@
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
 .container::-webkit-scrollbar {
   display: none;
+}
+
+.add {
+  width: 100%;
+  text-align: left;
+  transition: background-color var(--default-delay);
+  color: #1f1fff;
+  padding: 1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.add:hover {
+  background-color: #f5f5ff;
+}
+
+.container button {
+  background-color: transparent;
+  border: none;
 }

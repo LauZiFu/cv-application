@@ -1,4 +1,4 @@
 .header {
   height: auto;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid var(--input-field-color);
 }

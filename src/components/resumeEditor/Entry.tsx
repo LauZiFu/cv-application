@@ -67,22 +67,6 @@ export function EntryList({
   legend: string;
   onChange: (a: EntryRecord) => void;
 }) {
-  const handleClick = () => {
-    const id = crypto.randomUUID();
-    onChange({
-      ...entryList,
-      [id]: {
-        id: id,
-        place: "",
-        credential: "",
-        startDate: "",
-        endDate: "",
-        city: "",
-        description: "",
-      },
-    });
-  };
-
   const handleDelete = (key: string) => {
     onChange(
       Object.fromEntries(Object.entries(entryList).filter(([k]) => key !== k)),
@@ -90,30 +74,21 @@ export function EntryList({
   };
 
   return (
-    <div className={style.container}>
-      <ul className={style.entryList}>
-        {Object.entries(entryList).map(([id]) => (
-          <li key={id}>
-            <Entry
-              props={entryList[id]}
-              legend={legend}
-              onChange={(entry: Entry) =>
-                onChange({ ...entryList, [id]: entry })
-              }
-            />
-            <Button
-              className={style.delete}
-              icon={<Trash2 />}
-              handleClick={() => handleDelete(id)}
-            />
-          </li>
-        ))}
-      </ul>
-      <Button
-        className={style.add}
-        text="add entry"
-        handleClick={() => handleClick()}
-      />
-    </div>
+    <ul className={style.entryList}>
+      {Object.entries(entryList).map(([id]) => (
+        <li key={id}>
+          <Entry
+            props={entryList[id]}
+            legend={legend}
+            onChange={(entry: Entry) => onChange({ ...entryList, [id]: entry })}
+          />
+          <Button
+            className={style.delete}
+            icon={<Trash2 />}
+            handleClick={() => handleDelete(id)}
+          />
+        </li>
+      ))}
+    </ul>
   );
 }

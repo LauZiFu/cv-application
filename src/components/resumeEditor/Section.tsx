@@ -17,7 +17,6 @@ export default function Section({
           <h2 id={title + "-heading"}>{title}</h2>
           {description && <small>{description}</small>}
         </summary>
-
         {fields}
       </details>
     </section>

@@ -1,6 +1,8 @@
 import { useId, useState } from "react";
 import { camelToTitleCase } from "../../utils/utils.ts";
-import "../../styles/Input.module.css";
+import styles from "../../styles/Input.module.css";
+import CustomPickerDate from "./CustomDatePicker.tsx";
+import "react-datepicker/dist/react-datepicker.css";
 
 interface InputProps {
   name: string;
@@ -24,18 +26,47 @@ function Input({ name, value, onChange, type = "text" }: InputProps) {
     }
     onChange?.(next);
   };
+  let inputField;
 
+  switch (type) {
+    case "month":
+      inputField = (
+        <CustomPickerDate
+          id={id}
+          name={name}
+          type="month"
+          onChange={(date) => onChange?.(date)}
+        />
+      );
+      break;
+    case "date":
+      inputField = (
+        <CustomPickerDate
+          id={id}
+          name={name}
+          type="date"
+          onChange={(date) => onChange?.(date)}
+        />
+      );
+      break;
+    default:
+      inputField = (
+        <input
+          type={type}
+          name={name}
+          id={id}
+          value={currentValue}
+          onChange={(e) => handleChange(e)}
+        />
+      );
+  }
   return (
-    <label htmlFor={id}>
-      <div>{label}</div>
-      <input
-        type={type}
-        name={name}
-        id={id}
-        value={currentValue}
-        onChange={(e) => handleChange(e)}
-      />
-    </label>
+    <div className={styles.field}>
+      <label htmlFor={id}>
+        <div className={styles.label}>{label}</div>
+        {inputField}
+      </label>
+    </div>
   );
 }
 
