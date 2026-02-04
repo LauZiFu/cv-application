@@ -2,7 +2,7 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-type Date = "month" | "date";
+type PickerType = "month" | "date";
 
 export default function CustomPickerDate({
   type,
@@ -10,16 +10,17 @@ export default function CustomPickerDate({
   name,
   onChange,
 }: {
-  type: Date;
+  type: PickerType;
   id: string;
   name: string;
   onChange: (stateValue: string) => void;
 }) {
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const dateFormat = type === "date" ? "DD-MM-YYYY" : "MMM YYYY";
 
-  const handleChange = (date: Date) => {
-    onChange(date?.toString());
+  const handleChange = (date: Date | null) => {
+    if (!date) return;
+    onChange(date.toString());
     setSelectedDate(date);
   };
 
@@ -29,7 +30,7 @@ export default function CustomPickerDate({
       selected={selectedDate}
       id={id}
       name={name}
-      onChange={(date) => handleChange(date)}
+      onChange={handleChange}
       dateFormat={dateFormat}
     />
   );

@@ -12,6 +12,7 @@
   --dark-field-color: color-mix(in srgb, var(--input-field-color), black 50%);
   --brand-blue: rgb(108, 108, 255);
   --dark-brand-blue: color-mix(in srgb, var(--brand-blue), black 20%);
+  --darker-brand-blue: color-mix(in srgb, var(--brand-blue), black 50%);
 
   font-family: Helvetica, Arial, sans-serif, system-ui, Avenir;
 }

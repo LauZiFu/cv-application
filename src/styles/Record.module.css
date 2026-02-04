@@ -1,0 +1,29 @@
+.record {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto auto;
+  justify-items: left;
+  row-gap: 0.5rem;
+  padding-top: 1rem;
+}
+
+.record .title {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+
+.record .date {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+
+.record .place {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+
+.record > :last-child {
+  grid-column: 1/3;
+  grid-row: 3/4;
+  padding-top: 0.5rem;
+}

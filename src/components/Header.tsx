@@ -11,7 +11,7 @@ interface NavItemProps {
   className?: string;
 }
 export default function Header({
-  title = "Untitled",
+  title = "Resume Builder",
   actions,
 }: {
   title?: string;

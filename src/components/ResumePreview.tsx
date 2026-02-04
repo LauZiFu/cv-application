@@ -15,7 +15,7 @@ export default function ResumePreview({ resume }: { resume: Resume }) {
     <section className={style.container}>
       <article aria-live="polite" className={style.preview}>
         <header>
-          <h1>{fullName}</h1>
+          <h1>{fullName.toUpperCase()}</h1>
           <p>
             {Object.entries(personalDetails)
               .filter(

@@ -1,5 +1,6 @@
 import type { Entry, EntryRecord } from "../utils/resume";
 import { formatDateResume } from "../utils/utils";
+import styles from "../styles/Record.module.css";
 
 export function Record({
   place,
@@ -10,16 +11,14 @@ export function Record({
   description,
 }: Entry) {
   return (
-    <section>
-      <h3>
-        <span>
-          {credential}
-          {credential && ", "}
-          {place}
-        </span>
-        <span>{formatDateResume(startDate, endDate)}</span>
+    <section className={styles.record}>
+      <h3 className={styles.title}>
+        {credential}
+        {credential && ", "}
+        {place}
       </h3>
-      <p>{city}</p>
+      <h3 className={styles.date}> {formatDateResume(startDate, endDate)}</h3>
+      <p className={styles.city}>{city}</p>
       <p>{description}</p>
     </section>
   );

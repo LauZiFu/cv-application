@@ -28,6 +28,11 @@
   background-color: var(--dark-brand-blue);
 }
 
+.footerButton:active,
+.headerButton:active {
+  background-color: var(--darker-brand-blue);
+}
+
 .headerButton {
   background-color: var(--brand-blue);
   color: white;
