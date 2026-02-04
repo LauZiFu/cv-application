@@ -3,7 +3,7 @@ summary > h3 {
 }
 
 summary:hover > h3 {
-  color: #1f1fff;
+  color: var(--brand-blue);
 }
 
 li:has(details summary:hover) .delete,
@@ -67,7 +67,7 @@ ul.entryList {
 }
 
 .delete:hover {
-  color: #1f1fff;
+  color: var(--brand-blue);
 }
 
 .entryCard > .content {

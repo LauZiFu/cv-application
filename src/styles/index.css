@@ -10,6 +10,8 @@
   --background-color: #f5f5ff;
   --input-field-color: #eeeeff;
   --dark-field-color: color-mix(in srgb, var(--input-field-color), black 50%);
+  --brand-blue: rgb(108, 108, 255);
+  --dark-brand-blue: color-mix(in srgb, var(--brand-blue), black 20%);
 
   font-family: Helvetica, Arial, sans-serif, system-ui, Avenir;
 }
@@ -50,6 +52,11 @@ h6,
 input,
 textarea {
   overflow: hidden;
+}
+
+a {
+  color: black; /* Or any other desired color like #000000 or a specific name */
+  text-decoration: none; /* Optional: removes the default underline */
 }
 /*
 a {
