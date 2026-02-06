@@ -35,7 +35,12 @@ export default function App() {
         }
       />
       <main>
-        <ResumeEditor resume={resume} setResume={setResume} />
+        <ResumeEditor
+          resume={resume}
+          setResume={(resume) => {
+            setResume(resume);
+          }}
+        />
         <ResumePreview resume={preview} />
       </main>
       <footer className="footer">
